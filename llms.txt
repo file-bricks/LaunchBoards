@@ -1,0 +1,63 @@
+# LaunchBoards
+
+## Last-checked: 2026-09-10
+
+Canonical repository: https://github.com/file-bricks/SoftwareCenter
+Pointer repository: https://github.com/file-bricks/LaunchBoards
+Owner: file-bricks
+Primary language: Python
+Primary UI stack: PySide6 (Qt 6)
+License: MIT
+
+## Summary
+
+LaunchBoards is a specialized second branding and dedicated workspace profile of SoftwareCenter. It organizes application shortcuts, utilities, and project directories into tabbed workspace boards ("Launch Boards") with an emphasis on context switching, fast filter search, and drag-and-drop management. It runs on the shared, actively maintained SoftwareCenter codebase using the dedicated `PROFILE_LAUNCHBOARDS` profile.
+
+Discovery positioning: tab-based workspace launcher, local-first shortcut organizer, PySide6 desktop board manager, offline application launchpad, privacy-respecting program launcher.
+
+## Current Scope
+
+- Primary platform: Windows desktop (Windows 10 / 11).
+- Technology stack: Python 3.10+, PySide6 (Qt 6).
+- Build targets: Portable standalone PyInstaller executables (`LaunchBoards.exe`).
+- Non-goals: Cloud shortcut synchronization, background daemon services, shell taskbar replacements, automated internet package downloads.
+
+## Disambiguation
+
+LaunchBoards is a local desktop workspace organizer. It is not:
+- An enterprise portal or cloud-synced dashboard
+- An application package manager (it does not install or download software)
+- A system taskbar or shell replacement
+- A separate fork of SoftwareCenter (it is an official product profile sharing the same codebase)
+
+## Architecture & Security Invariants
+
+- **INV-LOCAL-01 (Zero Network Egress):** Operates 100% offline with zero outbound network connections, telemetry, or external pings.
+- **INV-LOCAL-02 (Unprivileged Run):** Executes strictly in standard user space (`RunAsInvoker`) without administrative (UAC) elevation.
+- **INV-LOCAL-03 (Non-Destructive Ops):** Removing shortcuts from a board only removes UI metadata; target files are never modified or removed.
+- **INV-LOCAL-04 (Safe Link Resolution):** Safely extracts target metadata from `.lnk` files without executing shell evaluation scripts.
+- **INV-LOCAL-05 (Profile Isolation):** Uses dedicated `QSettings` namespace `file-bricks/LaunchBoards` isolated from `file-bricks/SoftwareCenter`.
+- **INV-LOCAL-06 (Mutex Independence):** Uses dedicated single-instance lock `LaunchBoards.lock`, enabling simultaneous execution alongside SoftwareCenter.
+- **INV-LOCAL-07 (Schema Parity):** Compatible with standard profile schema (`softwarecenter-profile-v1.json`).
+- **INV-LOCAL-08 (Canonical Authority):** All core engine code, tests, and CI workflows reside in `file-bricks/SoftwareCenter`.
+- **INV-LOCAL-09 (Bilingual Parity):** Complete parity between English and German documentation (`P-006`).
+- **INV-LOCAL-10 (Security SLA):** 48-hour response confirmation and 5-day triage commitment.
+
+## Audience
+
+- Developers and power users needing fast workspace context switching across multiple projects
+- Desktop users who prefer tabbed launch boards over cluttered desktop icons or deeply nested start menus
+- Privacy-conscious users seeking 100% local-first utilities with zero telemetry
+
+## Search Phrases
+
+```
+LaunchBoards workspace launcher PySide6 desktop shortcut organizer
+tab-based desktop app organizer local-first Python Qt
+offline workspace launchpad no telemetry zero network
+drag and drop app launcher Windows desktop productivity
+SoftwareCenter sister product LaunchBoards profile isolation
+portable workspace profile softwarecenter-profile-v1.json
+local-first tabbed software launcher Windows 10 11
+PySide6 application launcher workspace board manager
+```

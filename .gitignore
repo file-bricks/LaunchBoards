@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches and testing
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage/
+htmlcov/
+
+# Packaging and builds
+build/
+dist/
+*.egg-info/
+*.spec
+*.exe
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+
+# Operating System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Multi-host sync conflicts (OneDrive / Syncthing)
+*-conflict-*
+*.sync-conflict-*
+*.sync-temp-*
+
+# Multi-agent coordination locks
+LOCK
+LOCK.*
+LOCK*.txt
+*.lock

@@ -1,0 +1,20 @@
+[project]
+name = "launchboards"
+version = "1.1.0"
+description = "LaunchBoards - organize and launch your workspaces. Sister product of SoftwareCenter."
+authors = [{ name = "Lukas Geiger" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/file-bricks/LaunchBoards"
+Repository = "https://github.com/file-bricks/LaunchBoards"
+Canonical = "https://github.com/file-bricks/SoftwareCenter"
+Issues = "https://github.com/file-bricks/SoftwareCenter/issues"
+Changelog = "https://github.com/file-bricks/LaunchBoards/blob/master/CHANGELOG.md"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --strict-markers"

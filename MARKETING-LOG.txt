@@ -1,0 +1,62 @@
+# LaunchBoards — Marketing & Discoverability Log
+
+Stand: 2026-09-10
+Repository: file-bricks/LaunchBoards
+Canonical Codebase: file-bricks/SoftwareCenter
+Branding Profile: PROFILE_LAUNCHBOARDS
+
+---
+
+## 1. Target Personas & Use Cases
+
+1. **The Multi-Project Developer:**
+   - Problem: Desktop icons are cluttered with disparate tools, batch scripts, IDE shortcuts, and dev servers.
+   - Solution: Dedicated tabbed boards (e.g., "Web Dev", "Data Science", "Embedded") switchable with one click.
+   - Key Hook: Zero background overhead, instantaneous launch, no electron bloat.
+
+2. **The Power Desktop User:**
+   - Problem: Windows Start menu requires typing full names or navigating multi-level menus.
+   - Solution: Visual, drag-and-drop workspace launchpad organized by context of use.
+   - Key Hook: Clean PySide6 native look, draggable reordering, persistent tab state.
+
+3. **The Privacy-Conscious Professional:**
+   - Problem: Modern app launchers and command bars require cloud accounts, track telemetry, or ping external servers.
+   - Solution: 100% offline, zero network egress, local QSettings storage.
+   - Key Hook: `INV-LOCAL-01` (Zero Network Egress) and `INV-LOCAL-02` (Unprivileged RunAsInvoker).
+
+---
+
+## 2. Discovery Keywords & Positioning
+
+- **Primary Search Terms:**
+  - `LaunchBoards workspace launcher`
+  - `PySide6 desktop shortcut organizer`
+  - `tab-based desktop app organizer Python`
+  - `local-first software launcher Windows`
+  - `drag and drop app launchpad offline`
+- **Disambiguation:**
+  - Distinct from enterprise software deployment tools (e.g. MECM / SCCM Software Center).
+  - Distinct from cloud-synced productivity portals.
+  - Positioned specifically as a local-first workspace manager with tabbed boards.
+
+---
+
+## 3. Discoverability & Web Visibility Assessment
+
+- **GitHub Visibility:**
+  - Description: "LaunchBoards - organize and launch your workspaces. Sister product of SoftwareCenter (shared codebase, separate branding/profile)."
+  - Topics: `desktop-app`, `local-first`, `productivity`, `pyside6`, `windows`, `workspace-launcher`
+  - Badges: Full Shields.io badge suite added for release, Python, UI, platform, codebase, ecosystem, umbrella, security SLA, and llms.txt.
+- **External Recommendations (For User Review / Future Manual Action):**
+  - **AlternativeTo:** Submit LaunchBoards / SoftwareCenter as local-first, privacy-respecting alternatives to FSLauncher, Stardock Fences, and RocketDock.
+  - **Awesome Lists:** Submit to `awesome-pyside`, `awesome-python-applications`, and `awesome-windows`.
+  - **Release Distribution:** Ensure standalone `LaunchBoards.exe` builds are attached as release assets alongside `SoftwareCenter.exe` in every GitHub release of SoftwareCenter.
+
+---
+
+## 4. Visual Assets & Documentation Status
+
+- **Banner:** Banner correctly linked via canonical SoftwareCenter asset (`raw.githubusercontent.com/file-bricks/SoftwareCenter/master/assets/banner.png`).
+- **Icons:** Bundled in canonical repo as `launchboards.ico` and `LaunchBoardsDesktopIcon.ico`.
+- **Diagrams:** Dual interactive Mermaid diagrams added (Architecture flowchart + User launch sequence), validated with `lint_mermaid.py` (0 syntax errors).
+- **Parity:** Complete German/English documentation parity (`README.md` and `README_de.md`).
