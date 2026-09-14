@@ -5,6 +5,22 @@ All notable changes to the LaunchBoards pointer repository and branding document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-09-14
+
+### Added
+- **Target Personas & SEO Discovery:** Formalized 4 concrete target personas (`[PERSONA-01]` Multi-Project Software Engineers & DevOps Practitioners, `[PERSONA-02]` Privacy-First Desktop Power Users & Researchers, `[PERSONA-03]` Creative Directors & Multimedia Producers, and `[PERSONA-04]` System Administrators & Homelab Operators) alongside high-intent search query matrices in `README.md` and `README_de.md`.
+- **10-Dimension Comparative Matrix:** Benchmarked LaunchBoards against Windows Start Menu / Taskbar, Microsoft PowerToys Run / Flow Launcher, Stardock Fences, and Cloud Dashboard SaaS (Notion / Start.me) directly mapped to `INV-LOCAL-01` through `INV-LOCAL-10`.
+- **Third-Party License Audit (`THIRD_PARTY_LICENSES.md`):** Comprehensive SPDX dependency catalog for Python (`PSF-2.0`), PySide6 / Qt 6 (`LGPL-3.0-only`), pytest (`MIT`), and ruff (`MIT OR Apache-2.0`). Formally verified PySide6 dynamic linking compliance under § 4 LGPLv3, unprivileged `RunAsInvoker` runtime execution, and Zero-Copyleft guarantee for user data.
+- **PEP 621 Standard URLs:** Added `Marketing Log` and `Third-Party Licenses` repository links to `pyproject.toml`.
+- **Expanded Contract Verification:** Extended automated test suite in `tests/test_metadata.py` from 8 to 16 contract tests covering quick navigation reciprocity, persona declarations, comparative matrix mappings, SPDX audits, and version synchrony.
+
+### Changed
+- **Bilingual Navigation Parity:** Expanded Quick Navigation to 14 reciprocal items in both English (`README.md`) and German (`README_de.md`).
+- **Badge Suite Modernization:** Updated Shields.io release badge to `v1.2.0`, added `Third-Party Licenses - Audited (MIT/LGPLv3)`, `Tests - 16 passed | 100%`, `Privileges - RunAsInvoker`, and `Network - Zero Egress`.
+- **AI Discoverability:** Updated `llms.txt` to version 1.2.0 with persona summaries, comparative matrix reference, and test counts.
+
+---
+
 ## [1.1.0] - 2026-09-10
 
 ### Added

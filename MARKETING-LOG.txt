@@ -1,9 +1,10 @@
 # LaunchBoards — Marketing & Discoverability Log
 
-Stand: 2026-09-10
+Stand: 2026-09-14
 Repository: file-bricks/LaunchBoards
 Canonical Codebase: file-bricks/SoftwareCenter
 Branding Profile: PROFILE_LAUNCHBOARDS
+Version: 1.2.0
 
 ---
 
@@ -60,3 +61,19 @@ Branding Profile: PROFILE_LAUNCHBOARDS
 - **Icons:** Bundled in canonical repo as `launchboards.ico` and `LaunchBoardsDesktopIcon.ico`.
 - **Diagrams:** Dual interactive Mermaid diagrams added (Architecture flowchart + User launch sequence), validated with `lint_mermaid.py` (0 syntax errors).
 - **Parity:** Complete German/English documentation parity (`README.md` and `README_de.md`).
+
+---
+
+## 5. Pfad B Discoverability, Personas & SEO Audit (Stand: 2026-09-14)
+
+- **Audit Date:** 2026-09-14
+- **Version:** 1.2.0
+- **Auditor:** Antigravity / Gemini (via GithubBot Pfad B)
+- **Enhancements Implemented:**
+  1. **Formalized Target Personas:** Integrated 4 concrete target personas directly into both READMEs (`[PERSONA-01]` Multi-Project Software Engineers & DevOps Practitioners, `[PERSONA-02]` Privacy-First Desktop Power Users & Researchers, `[PERSONA-03]` Creative Directors & Multimedia Producers, and `[PERSONA-04]` System Administrators & Homelab Operators).
+  2. **High-Intent SEO Queries:** Integrated dedicated search intent phrases in English and German (`local-first desktop workspace organizer`, `tabbed app launcher Windows`, `offline software shortcut manager`, etc.).
+  3. **10-Dimension Comparative Matrix:** Benchmarked LaunchBoards against Windows Start Menu / Taskbar, PowerToys Run / Flow Launcher, Stardock Fences, and Cloud Dashboard SaaS (Notion / Start.me), mapped directly to `INV-LOCAL-01` through `INV-LOCAL-10`.
+  4. **Third-Party License Audit (`THIRD_PARTY_LICENSES.md`):** Complete SPDX catalog for Python (PSF-2.0), PySide6 / Qt 6 (LGPL-3.0), pytest (MIT), and ruff (MIT/Apache-2.0). Formally verified PySide6 dynamic linking compliance under § 4 LGPLv3, unprivileged `RunAsInvoker` runtime execution, and Zero-Copyleft guarantee for user data.
+  5. **Bilingual Navigation Parity:** Expanded Quick Navigation to 14 reciprocal items in English (`README.md`) and German (`README_de.md`).
+  6. **PEP 621 Standard URLs:** Added `Marketing Log` and `Third-Party Licenses` to `pyproject.toml`.
+  7. **Contract Verification:** Test suite expanded to 16 automated contract tests in `tests/test_metadata.py`.

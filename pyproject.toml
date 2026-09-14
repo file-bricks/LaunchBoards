@@ -1,6 +1,6 @@
 [project]
 name = "launchboards"
-version = "1.1.0"
+version = "1.2.0"
 description = "LaunchBoards - organize and launch your workspaces. Sister product of SoftwareCenter."
 authors = [{ name = "Lukas Geiger" }]
 license = { text = "MIT" }
@@ -14,7 +14,9 @@ Repository = "https://github.com/file-bricks/LaunchBoards"
 Canonical = "https://github.com/file-bricks/SoftwareCenter"
 Issues = "https://github.com/file-bricks/SoftwareCenter/issues"
 Changelog = "https://github.com/file-bricks/LaunchBoards/blob/master/CHANGELOG.md"
+"Marketing Log" = "https://github.com/file-bricks/LaunchBoards/blob/master/MARKETING-LOG.txt"
+"Third-Party Licenses" = "https://github.com/file-bricks/LaunchBoards/blob/master/THIRD_PARTY_LICENSES.md"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-v --strict-markers"
+addopts = "-ra -v --strict-markers"

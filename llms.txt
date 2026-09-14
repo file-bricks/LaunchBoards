@@ -1,6 +1,7 @@
 # LaunchBoards
 
-## Last-checked: 2026-09-10
+## Last-checked: 2026-09-14
+## Version: 1.2.0
 
 Canonical repository: https://github.com/file-bricks/SoftwareCenter
 Pointer repository: https://github.com/file-bricks/LaunchBoards
@@ -8,6 +9,7 @@ Owner: file-bricks
 Primary language: Python
 Primary UI stack: PySide6 (Qt 6)
 License: MIT
+Third-Party Licenses: https://github.com/file-bricks/LaunchBoards/blob/master/THIRD_PARTY_LICENSES.md
 
 ## Summary
 
@@ -30,6 +32,17 @@ LaunchBoards is a local desktop workspace organizer. It is not:
 - A system taskbar or shell replacement
 - A separate fork of SoftwareCenter (it is an official product profile sharing the same codebase)
 
+## Target Personas
+
+- **[PERSONA-01] Multi-Project Software Engineers & DevOps Practitioners:** Instant context-switching across project stacks without desktop clutter.
+- **[PERSONA-02] Privacy-First Desktop Power Users & Researchers:** Air-gapped and local-first execution with zero cloud telemetry.
+- **[PERSONA-03] Creative Directors & Multimedia Producers:** Segregating heavy media creation suites into dedicated boards without RAM overhead.
+- **[PERSONA-04] System Administrators & Homelab Operators:** Unprivileged `RunAsInvoker` portable management launcher across workstations.
+
+## Comparative Matrix vs. Alternatives
+
+Evaluated against Windows Start Menu / Taskbar, Microsoft PowerToys Run / Flow Launcher, Stardock Fences, and Cloud Dashboard SaaS across 10 dimensions mapped to `INV-LOCAL-01` through `INV-LOCAL-10`.
+
 ## Architecture & Security Invariants
 
 - **INV-LOCAL-01 (Zero Network Egress):** Operates 100% offline with zero outbound network connections, telemetry, or external pings.
@@ -43,11 +56,9 @@ LaunchBoards is a local desktop workspace organizer. It is not:
 - **INV-LOCAL-09 (Bilingual Parity):** Complete parity between English and German documentation (`P-006`).
 - **INV-LOCAL-10 (Security SLA):** 48-hour response confirmation and 5-day triage commitment.
 
-## Audience
+## Contract Test Suite
 
-- Developers and power users needing fast workspace context switching across multiple projects
-- Desktop users who prefer tabbed launch boards over cluttered desktop icons or deeply nested start menus
-- Privacy-conscious users seeking 100% local-first utilities with zero telemetry
+16 automated metadata and compliance contract tests covering bilingual parity, mermaid diagram quoting, banner guardrails, personas, comparative matrix, and third-party license inventory.
 
 ## Search Phrases
 

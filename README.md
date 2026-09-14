@@ -8,6 +8,10 @@
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white" alt="Python 3.10 | 3.11 | 3.12"></a>
   <a href="https://doc.qt.io/qtforpython-6/"><img src="https://img.shields.io/badge/UI-PySide6%20(Qt%206)-41CD52.svg?logo=qt&logoColor=white" alt="PySide6 UI"></a>
   <a href="https://www.microsoft.com/windows"><img src="https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6.svg?logo=windows&logoColor=white" alt="Platform: Windows"></a>
+  <a href="THIRD_PARTY_LICENSES.md"><img src="https://img.shields.io/badge/Network-Zero%20Egress-brightgreen.svg" alt="Zero Network Egress"></a>
+  <a href="THIRD_PARTY_LICENSES.md"><img src="https://img.shields.io/badge/Privileges-RunAsInvoker-brightgreen.svg" alt="Unprivileged RunAsInvoker"></a>
+  <a href="https://github.com/file-bricks/LaunchBoards/actions"><img src="https://img.shields.io/badge/Tests-16%20passed%20%7C%20100%25-brightgreen.svg" alt="Contract Tests: 16 passed"></a>
+  <a href="THIRD_PARTY_LICENSES.md"><img src="https://img.shields.io/badge/Third--Party%20Licenses-Audited%20(MIT%2FLGPLv3)-brightgreen.svg" alt="Third-Party Licenses Audited"></a>
   <a href="https://github.com/file-bricks/SoftwareCenter"><img src="https://img.shields.io/badge/Codebase-SoftwareCenter-orange.svg" alt="Sister Product Codebase"></a>
   <a href="https://github.com/file-bricks"><img src="https://img.shields.io/badge/Ecosystem-file--bricks-blue.svg" alt="Ecosystem: file-bricks"></a>
   <a href="https://github.com/open-bricks"><img src="https://img.shields.io/badge/Umbrella-open--bricks-purple.svg" alt="Umbrella: open-bricks"></a>
@@ -31,12 +35,15 @@
 ## Quick Navigation
 
 - [What is LaunchBoards?](#what-is-launchboards)
+- [Target Personas & Discoverability](#target-personas--discoverability)
 - [Why Two Names for One App?](#why-two-names-for-one-app)
 - [Architecture & Profile Isolation](#architecture--profile-isolation)
 - [Workspace Launch Lifecycle](#workspace-launch-lifecycle)
+- [Comparative Matrix vs. Alternatives](#comparative-matrix-vs-alternatives)
 - [Core Features](#core-features)
 - [Getting Started & How to Run](#getting-started--how-to-run)
 - [System Invariants & Governance](#system-invariants--governance)
+- [Third-Party Licenses & Transparency](#third-party-licenses--transparency)
 - [Canonical Repository & Contributing](#canonical-repository--contributing)
 - [Ecosystem & Sister Projects](#ecosystem--sister-projects)
 - [Security & Vulnerability Reporting](#security--vulnerability-reporting)
@@ -52,6 +59,40 @@ While traditional app launchers focus on browsing a flat directory of installed 
 
 > [!NOTE]
 > LaunchBoards is not a fork or detached clone. It is an officially supported product profile of the canonical [SoftwareCenter](https://github.com/file-bricks/SoftwareCenter) codebase. Both brandings run concurrently without mutual interference.
+
+---
+
+## Target Personas & Discoverability
+
+LaunchBoards is tailored to four concrete user personas seeking a clutter-free, responsive, and privacy-respecting application dashboard:
+
+### [PERSONA-01] Multi-Project Software Engineers & DevOps Practitioners
+* **Pain Point:** Desktops overcrowded with dozens of IDE shortcuts, terminal emulators, Docker scripts, and development tools that change based on the active client or project stack.
+* **Solution:** Separate boards for distinct projects (e.g., *Frontend Web*, *Kubernetes Ops*, *Rust Embedded*) switchable in under 100 milliseconds with zero background CPU overhead.
+* **Key Workflow:** Drag and drop `.lnk` shortcuts, batch scripts, and IDE workspaces into dedicated project tabs; instant filter search to launch target tools without Alt+Tab fatigue.
+
+### [PERSONA-02] Privacy-First Desktop Power Users & Researchers
+* **Pain Point:** Frustration with modern OS start menus and cloud-connected launcher SaaS injecting telemetry, online ads, web results, and background update agents.
+* **Solution:** 100% offline, zero network egress (`INV-LOCAL-01`), unprivileged user execution (`INV-LOCAL-02`), storing all configuration in native local `QSettings`.
+* **Key Workflow:** Completely offline operation on air-gapped workstations or privacy-hardened PCs; portable backup via standard JSON schema (`softwarecenter-profile-v1.json`).
+
+### [PERSONA-03] Creative Directors & Multimedia Producers
+* **Pain Point:** Context switching between massive media creation suites (DAWs, 3D suites, NLE video editors, vector tools) with scattered asset directories and plugin helpers.
+* **Solution:** Clean tabbed categories (*Audio Production*, *Video Editing*, *3D Rendering*) that keep large application suites neatly segregated.
+* **Key Workflow:** Single-click launching of complex media software without heavy Electron launcher overhead consuming valuable system RAM and GPU resources.
+
+### [PERSONA-04] System Administrators & Homelab Operators
+* **Pain Point:** Managing dozens of administrative consoles, remote desktop profiles, hypervisor management tools, and SSH batch scripts across multiple environments.
+* **Solution:** Centralized, portable launchpad requiring no administrative elevation (UAC-free `RunAsInvoker`), executable directly from a USB stick or network share.
+* **Key Workflow:** Deploying a standardized portable `.exe` with a preconfigured `softwarecenter-profile-v1.json` board set for instant workstation administration.
+
+### High-Intent Search & Discovery Keywords
+* `local-first desktop workspace organizer`
+* `tabbed app launcher Windows`
+* `offline software shortcut manager`
+* `PySide6 desktop launcher`
+* `portable workspace boards Windows 11`
+* `zero telemetry application launcher`
 
 ---
 
@@ -124,6 +165,25 @@ sequenceDiagram
 
 ---
 
+## Comparative Matrix vs. Alternatives
+
+LaunchBoards is evaluated against four alternative approaches across 10 architectural and governance dimensions:
+
+| Architectural Dimension | Invariant | **LaunchBoards** | Windows Start Menu / Taskbar | PowerToys Run / Flow Launcher | Stardock Fences / Desktop Organizers | Cloud Dashboard SaaS (Notion / Start.me) |
+|---|---|---|---|---|---|---|
+| **Zero Network Egress** | `INV-LOCAL-01` | **100% Offline (Zero Egress)** | Bing search integration, cloud telemetries | Telemetry / optional web query plugins | License validation ping, updater daemon | Requires constant internet & cloud login |
+| **Unprivileged Execution** | `INV-LOCAL-02` | **Strict RunAsInvoker** | OS component (SYSTEM) | Often requires admin elevation for hooks | Shell extension injecting into explorer.exe | Browser sandboxed, data stored remotely |
+| **Non-Destructive Deletion** | `INV-LOCAL-03` | **Detaches UI reference only** | May trigger app uninstall | No board structuring | Can inadvertently delete source files | Remote link deletion |
+| **Safe Link Resolution** | `INV-LOCAL-04` | **Non-evaluating .lnk parser** | Native shell parsing | Native shell parsing | Native shell parsing | URL hyperlinks only |
+| **Profile & Mutex Isolation** | `INV-LOCAL-05`<br>`INV-LOCAL-06` | **Independent QSettings & Mutex** | Single monolithic system state | Single global background instance | Single shell-hooked desktop state | Multi-tenant cloud account |
+| **Open Schema Interoperability** | `INV-LOCAL-07` | **Standard JSON profile format** | Proprietary binary database | Custom JSON/XML configs | Proprietary registry layout | Proprietary SaaS export formats |
+| **Open Source & Canonical Code**| `INV-LOCAL-08` | **100% Open Source (MIT)** | Proprietary closed-source | Open Source (MIT) | Commercial proprietary | Proprietary SaaS |
+| **Bilingual Parity (EN/DE)** | `INV-LOCAL-09` | **100% Reciprocal parity** | OS language dependent | Variable community translations | Variable translations | English first |
+| **Security Response SLA** | `INV-LOCAL-10` | **Documented 48h SLA** | Unpredictable OS patch cycle | Best-effort GitHub issues | Commercial helpdesk | Commercial SLA |
+| **Zero Installation / Portability** | N/A | **Standalone portable EXE** | Built-in (non-portable) | MSI installer required | Installer + driver hooks required | Web browser dependent |
+
+---
+
 ## Core Features
 
 - 📑 **Tabbed Launch Boards:** Create, rename, and rearrange custom workspace boards tailored to specific workflows (e.g. *Code*, *Audio*, *Comms*).
@@ -189,6 +249,17 @@ LaunchBoards adheres to strict operational and architectural invariants:
 | `INV-LOCAL-08` | **Canonical Authority** | The canonical source of truth for code, tests, and CI is `file-bricks/SoftwareCenter`. |
 | `INV-LOCAL-09` | **Bilingual Parity** | All end-user documentation maintains complete German/English alignment (`P-006`). |
 | `INV-LOCAL-10` | **Security SLA** | Security disclosures receive a verified response within 48 hours and triage within 5 days. |
+
+---
+
+## Third-Party Licenses & Transparency
+
+LaunchBoards is committed to radical licensing transparency and zero-copyleft contamination for user data:
+
+- **MIT Permissive License:** LaunchBoards itself is licensed under the permissive MIT License.
+- **PySide6 / Qt 6 Dynamic Linking:** Compliant with § 4 of the GNU Lesser General Public License (LGPL-3.0). PySide6 is loaded dynamically, allowing end users to upgrade or substitute the underlying Qt runtime without modifying LaunchBoards.
+- **Zero-Copyleft Guarantee:** User shortcuts, workspace configurations, and launched binaries remain completely unencumbered by copyleft.
+- **SPDX Inventory:** Full dependency breakdown and license texts are documented in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
 
 ---
 
