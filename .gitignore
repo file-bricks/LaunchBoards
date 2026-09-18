@@ -41,9 +41,33 @@ Desktop.ini
 *-conflict-*
 *.sync-conflict-*
 *.sync-temp-*
+*conflicted copy*
+* (Kopie)*
+* (Copy)*
+*-ASUS*
+*-ASUS-GEI*
+*-LAPTOP*
+*-WORKSTATION*
+*-WORKSTATION-LG*
+*-Mac Studio*
+*-MacBook*
 
 # Multi-agent coordination locks
 LOCK
 LOCK.*
 LOCK*.txt
+LOCK.permissions.json
+LOCK.user.*
+LOCK.until.*
+LOCK.condition.*
 *.lock
+uv.lock
+!package-lock.json
+
+# Additional cache and patch artifacts
+.hypothesis/
+.turbo/
+.nyc_output/
+*.orig
+*.rej
+

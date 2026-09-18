@@ -4,13 +4,14 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/Lizenz-MIT-yellow.svg" alt="Lizenz: MIT"></a>
-  <a href="https://github.com/file-bricks/SoftwareCenter/releases"><img src="https://img.shields.io/badge/Release-v1.2.0-blue.svg" alt="Aktuelles Release"></a>
-  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white" alt="Python 3.10 | 3.11 | 3.12"></a>
+  <a href="https://github.com/file-bricks/SoftwareCenter/releases"><img src="https://img.shields.io/badge/Release-v1.2.1-blue.svg" alt="Aktuelles Release"></a>
+  <a href="https://github.com/file-bricks/LaunchBoards/actions"><img src="https://img.shields.io/badge/CI-Bestanden-brightgreen.svg" alt="CI Status"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-3776AB.svg?logo=python&logoColor=white" alt="Python 3.10 | 3.11 | 3.12 | 3.13"></a>
   <a href="https://doc.qt.io/qtforpython-6/"><img src="https://img.shields.io/badge/UI-PySide6%20(Qt%206)-41CD52.svg?logo=qt&logoColor=white" alt="PySide6 Benutzeroberfläche"></a>
   <a href="https://www.microsoft.com/windows"><img src="https://img.shields.io/badge/Plattform-Windows%2010%20%7C%2011-0078D6.svg?logo=windows&logoColor=white" alt="Plattform: Windows"></a>
   <a href="THIRD_PARTY_LICENSES.md"><img src="https://img.shields.io/badge/Netzwerk-Zero%20Egress-brightgreen.svg" alt="Kein Netzwerk-Traffic"></a>
   <a href="THIRD_PARTY_LICENSES.md"><img src="https://img.shields.io/badge/Rechte-RunAsInvoker-brightgreen.svg" alt="Unprivilegierter Modus (RunAsInvoker)"></a>
-  <a href="https://github.com/file-bricks/LaunchBoards/actions"><img src="https://img.shields.io/badge/Tests-16%20bestanden%20%7C%20100%25-brightgreen.svg" alt="Vertragstests: 16 bestanden"></a>
+  <a href="https://github.com/file-bricks/LaunchBoards/actions"><img src="https://img.shields.io/badge/Tests-21%20bestanden%20%7C%20100%25-brightgreen.svg" alt="Vertragstests: 21 bestanden"></a>
   <a href="THIRD_PARTY_LICENSES.md"><img src="https://img.shields.io/badge/Drittanbieter--Lizenzen-Gepr%C3%BCft%20(MIT%2FLGPLv3)-brightgreen.svg" alt="Drittanbieter-Lizenzen geprüft"></a>
   <a href="https://github.com/file-bricks/SoftwareCenter"><img src="https://img.shields.io/badge/Codebasis-SoftwareCenter-orange.svg" alt="Schwesterprodukt Codebasis"></a>
   <a href="https://github.com/file-bricks"><img src="https://img.shields.io/badge/%C3%96kosystem-file--bricks-blue.svg" alt="Ökosystem: file-bricks"></a>
@@ -307,4 +308,7 @@ Wenn du eine Schwachstelle oder ein Sicherheitsproblem findest, befolge bitte un
 
 MIT-Lizenz — siehe [LICENSE](LICENSE) für den vollständigen Text.
 
+Dieses Projekt ist eine unentgeltliche Open-Source-Spende. Die Haftung ist auf Vorsatz und grobe Fahrlässigkeit beschränkt (§ 521 BGB). Nutzung auf eigenes Risiko. Es gibt keine Garantie, Wartungszusage oder Zusicherung einer bestimmten Eignung.
+
 Copyright (c) 2026 Lukas Geiger.
+

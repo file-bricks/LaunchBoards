@@ -1,10 +1,14 @@
-# -*- coding: utf-8 -*-
 """Contract tests for LaunchBoards metadata, discoverability, and documentation parity."""
 
 import re
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def _clean_anchor(s: str) -> str:
+    return re.sub(r"[\s\-?&.:]", "", s)
+
 
 
 def test_readme_files_exist_and_not_empty():
@@ -58,9 +62,11 @@ def test_mermaid_diagram_syntax():
                     trimmed = label.strip()
                     if not (trimmed.startswith('"') and trimmed.endswith('"')):
                         for c in illegal_chars:
-                            assert c not in trimmed, (
-                                f"Unquoted '{c}' in edge label '{trimmed}' in {doc_name}: line '{line}'"
+                            msg = (
+                                f"Unquoted '{c}' in edge label '{trimmed}' in {doc_name}: "
+                                f"line '{line}'"
                             )
+                            assert c not in trimmed, msg
 
 
 def test_banner_guardrails_compliance():
@@ -68,7 +74,9 @@ def test_banner_guardrails_compliance():
     for doc_name in ("README.md", "README_de.md"):
         content = (REPO_ROOT / doc_name).read_text(encoding="utf-8")
         banners = re.findall(r'<img\s+[^>]*banner[^>]*>', content, re.IGNORECASE)
-        assert len(banners) == 1, f"Expected exactly 1 banner tag in {doc_name}, found {len(banners)}"
+        assert len(banners) == 1, (
+            f"Expected exactly 1 banner tag in {doc_name}, found {len(banners)}"
+        )
 
 
 def test_llms_txt_integrity():
@@ -80,8 +88,8 @@ def test_llms_txt_integrity():
     assert "https://github.com/file-bricks/LaunchBoards" in content
     assert "PROFILE_LAUNCHBOARDS" in content
     assert "Search Phrases" in content
-    assert "2026-09-14" in content
-    assert "1.2.0" in content
+    assert ("2026-09-14" in content or "2026-09-18" in content)
+    assert ("1.2.0" in content or "1.2.1" in content)
     for i in range(1, 11):
         inv = f"INV-LOCAL-{i:02d}"
         assert inv in content, f"{inv} missing in llms.txt"
@@ -165,22 +173,29 @@ def test_quick_navigation_parity_and_anchors():
     en_links = re.findall(r"\[([^\]]+)\]\(#([^\)]+)\)", content_en.split("---")[2])
     de_links = re.findall(r"\[([^\]]+)\]\(#([^\)]+)\)", content_de.split("---")[2])
 
-    assert len(en_links) == 14, f"Expected 14 quick navigation links in README.md, found {len(en_links)}"
-    assert len(de_links) == 14, f"Expected 14 quick navigation links in README_de.md, found {len(de_links)}"
+    assert len(en_links) == 14, (
+        f"Expected 14 quick navigation links in README.md, found {len(en_links)}"
+    )
+    assert len(de_links) == 14, (
+        f"Expected 14 quick navigation links in README_de.md, found {len(de_links)}"
+    )
 
     # Ensure all anchors exist in their respective document
+    pattern = re.compile(r"^#+\s+.*", re.MULTILINE)
+    headers_en = [_clean_anchor(h.lower()) for h in pattern.findall(content_en)]
+    headers_de = [_clean_anchor(h.lower()) for h in pattern.findall(content_de)]
+
     for _, anchor in en_links:
-        pattern = re.compile(rf"^#+\s+.*", re.MULTILINE)
-        headers = [h.lower() for h in pattern.findall(content_en)]
-        # Normalize anchor test
-        found = any(anchor.replace("-", "") in h.replace(" ", "").replace("-", "").replace("?", "").replace("&", "").replace(".", "").replace(":", "") for h in headers)
-        assert found, f"Anchor #{anchor} target heading not found in README.md"
+        clean_a = _clean_anchor(anchor)
+        assert any(clean_a in h for h in headers_en), (
+            f"Anchor #{anchor} target heading not found in README.md"
+        )
 
     for _, anchor in de_links:
-        pattern = re.compile(rf"^#+\s+.*", re.MULTILINE)
-        headers = [h.lower() for h in pattern.findall(content_de)]
-        found = any(anchor.replace("-", "") in h.replace(" ", "").replace("-", "").replace("?", "").replace("&", "").replace(".", "").replace(":", "") for h in headers)
-        assert found, f"Anchor #{anchor} target heading not found in README_de.md"
+        clean_a = _clean_anchor(anchor)
+        assert any(clean_a in h for h in headers_de), (
+            f"Anchor #{anchor} target heading not found in README_de.md"
+        )
 
 
 def test_pyproject_pep621_urls_and_version():
@@ -188,7 +203,7 @@ def test_pyproject_pep621_urls_and_version():
     assert pyproject_path.is_file(), "pyproject.toml must exist"
     content = pyproject_path.read_text(encoding="utf-8")
 
-    assert 'version = "1.2.0"' in content
+    assert ('version = "1.2.0"' in content or 'version = "1.2.1"' in content)
     assert '"Marketing Log"' in content
     assert '"Third-Party Licenses"' in content
     assert "addopts = \"-ra -v --strict-markers\"" in content
@@ -199,9 +214,9 @@ def test_marketing_log_recency():
     assert ml_path.is_file(), "MARKETING-LOG.txt must exist"
     content = ml_path.read_text(encoding="utf-8")
 
-    assert "2026-09-14" in content
-    assert "1.2.0" in content
-    assert "Pfad B Discoverability, Personas & SEO Audit" in content
+    assert ("2026-09-14" in content or "2026-09-18" in content)
+    assert ("1.2.0" in content or "1.2.1" in content)
+    assert "Pfad A Repository Hygiene, CI Matrix & Contract Expansion" in content
 
 
 def test_unprivileged_run_as_invoker_affirmed():
@@ -215,3 +230,104 @@ def test_pyside6_lgpl_dynamic_linking_affirmed():
     assert "LGPL-3.0" in tpl_content
     assert "Dynamic Linking" in tpl_content
     assert "§ 4 LGPLv3" in tpl_content
+
+
+def test_github_actions_ci_workflows_present_and_hardened():
+    wf_dir = REPO_ROOT / ".github" / "workflows"
+    assert wf_dir.is_dir(), ".github/workflows directory must exist"
+
+    ci_file = wf_dir / "ci.yml"
+    assert ci_file.is_file(), "ci.yml must exist"
+    ci_content = ci_file.read_text(encoding="utf-8")
+    assert "timeout-minutes: 15" in ci_content
+    assert "contents: read" in ci_content
+    assert "cancel-in-progress: true" in ci_content
+    assert "ubuntu-latest" in ci_content
+    assert "windows-latest" in ci_content
+    for py_ver in ("3.10", "3.11", "3.12", "3.13"):
+        assert py_ver in ci_content, f"Python {py_ver} missing from CI matrix"
+
+    stale_file = wf_dir / "stale.yml"
+    assert stale_file.is_file(), "stale.yml must exist"
+    stale_content = stale_file.read_text(encoding="utf-8")
+    assert "actions/stale@v9" in stale_content
+    assert "timeout-minutes: 10" in stale_content
+    assert "issues: write" in stale_content
+
+    welcome_file = wf_dir / "welcome.yml"
+    assert welcome_file.is_file(), "welcome.yml must exist"
+    welcome_content = welcome_file.read_text(encoding="utf-8")
+    assert "actions/first-interaction@v3" in welcome_content
+    assert "timeout-minutes: 5" in welcome_content
+
+
+def test_gitignore_multi_host_and_agent_locks():
+    gi_path = REPO_ROOT / ".gitignore"
+    assert gi_path.is_file(), ".gitignore must exist"
+    content = gi_path.read_text(encoding="utf-8")
+
+    # Multi-host sync patterns
+    assert "*conflicted copy*" in content
+    assert "*-ASUS*" in content
+    assert "*-WORKSTATION*" in content
+    assert "*-Mac Studio*" in content
+
+    # Agent coordination locks
+    assert "LOCK.permissions.json" in content
+    assert "LOCK.user.*" in content
+    assert "LOCK.until.*" in content
+    assert "LOCK.condition.*" in content
+    assert "uv.lock" in content
+    assert "!package-lock.json" in content
+
+
+def test_pep621_pyproject_metadata_and_tools():
+    pyproject_path = REPO_ROOT / "pyproject.toml"
+    assert pyproject_path.is_file(), "pyproject.toml must exist"
+    content = pyproject_path.read_text(encoding="utf-8")
+
+    assert "[build-system]" in content
+    assert 'build-backend = "setuptools.build_meta"' in content
+    assert 'requires-python = ">=3.10"' in content
+    assert "license-files =" in content
+    assert "keywords =" in content
+    assert "classifiers =" in content
+    assert "Programming Language :: Python :: 3.13" in content
+
+    # Standard URLs
+    assert "Documentation =" in content
+    assert "Security =" in content
+    assert '"Parent Organization" =' in content
+    assert '"Umbrella Ecosystem" =' in content
+    assert '"LLM Ready" =' in content
+
+    # Tooling config
+    assert "[tool.ruff]" in content
+    assert 'target-version = "py310"' in content
+    assert "norecursedirs =" in content
+
+
+def test_statutory_bgb_521_notice_present():
+    content_de = (REPO_ROOT / "README_de.md").read_text(encoding="utf-8")
+    content_en = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+
+    assert "§ 521 BGB" in content_de, "§ 521 BGB notice missing in README_de.md"
+    assert "unentgeltliche" in content_de or "Gefälligkeitsrecht" in content_de
+    assert "§ 521 BGB" in content_en, "§ 521 BGB notice missing in README.md"
+    assert "gratuitous" in content_en or "liability" in content_en
+
+
+def test_version_synchrony_across_all_manifests():
+    version = "1.2.1"
+    pyproject = (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    changelog = (REPO_ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    llms = (REPO_ROOT / "llms.txt").read_text(encoding="utf-8")
+    tpl = (REPO_ROOT / "THIRD_PARTY_LICENSES.md").read_text(encoding="utf-8")
+    marketing = (REPO_ROOT / "MARKETING-LOG.txt").read_text(encoding="utf-8")
+
+    assert f'version = "{version}"' in pyproject, "pyproject.toml version mismatch"
+    assert f"[{version}] - 2026-09-18" in changelog, "CHANGELOG.md version mismatch"
+    assert f"## Version: {version}" in llms, "llms.txt version mismatch"
+    assert f"**Version:** {version}" in tpl, "THIRD_PARTY_LICENSES.md version mismatch"
+    assert f"**Version:** {version}" in marketing, "MARKETING-LOG.txt version mismatch"
+

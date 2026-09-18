@@ -1,8 +1,8 @@
 # Third-Party Licenses & Runtime Invariants
 
 **Repository:** `file-bricks/LaunchBoards`  
-**Stand:** 2026-09-14  
-**Version:** 1.2.0  
+**Stand:** 2026-09-18  
+**Version:** 1.2.1  
 **SPDX-License-Identifier:** MIT  
 **Canonical Codebase:** `file-bricks/SoftwareCenter`  
 **Branding Profile:** `PROFILE_LAUNCHBOARDS`  

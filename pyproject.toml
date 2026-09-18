@@ -1,22 +1,74 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "launchboards"
-version = "1.2.0"
+version = "1.2.1"
 description = "LaunchBoards - organize and launch your workspaces. Sister product of SoftwareCenter."
 authors = [{ name = "Lukas Geiger" }]
 license = { text = "MIT" }
+license-files = ["LICENSE", "THIRD_PARTY_LICENSES.md"]
 readme = "README.md"
 requires-python = ">=3.10"
+keywords = [
+    "launcher",
+    "workspace",
+    "desktop",
+    "pyside6",
+    "shortcuts",
+    "local-first",
+    "windows",
+    "tabbed-organizer",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Desktop Environment",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
 dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/file-bricks/LaunchBoards"
+Documentation = "https://github.com/file-bricks/LaunchBoards#readme"
 Repository = "https://github.com/file-bricks/LaunchBoards"
 Canonical = "https://github.com/file-bricks/SoftwareCenter"
 Issues = "https://github.com/file-bricks/SoftwareCenter/issues"
 Changelog = "https://github.com/file-bricks/LaunchBoards/blob/master/CHANGELOG.md"
-"Marketing Log" = "https://github.com/file-bricks/LaunchBoards/blob/master/MARKETING-LOG.txt"
+Security = "https://github.com/file-bricks/LaunchBoards/blob/master/SECURITY.md"
 "Third-Party Licenses" = "https://github.com/file-bricks/LaunchBoards/blob/master/THIRD_PARTY_LICENSES.md"
+"Parent Organization" = "https://github.com/file-bricks"
+"Umbrella Ecosystem" = "https://github.com/open-bricks"
+"Marketing Log" = "https://github.com/file-bricks/LaunchBoards/blob/master/MARKETING-LOG.txt"
+"LLM Ready" = "https://github.com/file-bricks/LaunchBoards/blob/master/llms.txt"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.1.0",
+]
 
 [tool.pytest.ini_options]
+minversion = "7.0"
 testpaths = ["tests"]
 addopts = "-ra -v --strict-markers"
+norecursedirs = [".git", ".pytest_cache", "__pycache__", "build", "dist", ".venv", "venv"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+

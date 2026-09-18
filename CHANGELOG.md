@@ -5,6 +5,21 @@ All notable changes to the LaunchBoards pointer repository and branding document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-09-18
+
+### Added
+- **GitHub Actions CI/CD Workflows:** Implemented complete CI matrix pipeline in `.github/workflows/ci.yml` (multi-OS testing on `ubuntu-latest` and `windows-latest`, Python 3.10 to 3.13 matrix, `timeout-minutes: 15`, concurrency cancellation, and least-privilege `contents: read`), automated stale triage in `.github/workflows/stale.yml` (`actions/stale@v9`, `timeout-minutes: 10`, `issues: write, pull-requests: write`), and contributor welcome automation in `.github/workflows/welcome.yml` (`actions/first-interaction@v3`, `timeout-minutes: 5`).
+- **PEP 621 Standard Build & Metadata:** Hardened `pyproject.toml` with standard `[build-system]` (`setuptools>=68.0`, `wheel`), `license-files`, discovery `keywords`, comprehensive `classifiers` (Python 3.10-3.13, Windows, OS Independent), optional dev dependencies (`[project.optional-dependencies]`), and tool configurations (`ruff`, `pytest` with `norecursedirs`).
+- **Statutory Legal Notice (§ 521 BGB):** Explicitly documented German statutory liability notice for gratuitous open-source provisions (§ 521 BGB Gefälligkeitsrecht) in `README_de.md` and equivalent international disclaimer in `README.md`.
+- **Contract Verification Expansion:** Added new automated contract tests in `tests/test_metadata.py` verifying CI workflow configurations, multi-host and multi-agent lock patterns in `.gitignore`, PEP 621 metadata completeness, and statutory legal notices.
+
+### Changed
+- **Multi-Host & Lock Guardrails:** Hardened `.gitignore` with fleet-standard conflict patterns (`*conflicted copy*`, `* (Kopie)*`, `* (Copy)*`, `*-ASUS*`, `*-ASUS-GEI*`, `*-LAPTOP*`, `*-WORKSTATION*`, `*-WORKSTATION-LG*`, `*-Mac Studio*`, `*-MacBook*`) and coordination locks (`LOCK.permissions.json`, `LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`, `uv.lock`, `!package-lock.json`).
+- **Badge Suite & Manifest Parity:** Updated release badges to `v1.2.1`, added CI passing badge, refreshed contract test count badges, and synchronized version metadata across `pyproject.toml`, `llms.txt`, `THIRD_PARTY_LICENSES.md`, and `MARKETING-LOG.txt`.
+- **Code Quality & Linter Compliance:** Resolved f-string warnings in `tests/test_metadata.py` achieving 100% clean `ruff check .` status.
+
+---
+
 ## [1.2.0] - 2026-09-14
 
 ### Added

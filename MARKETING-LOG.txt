@@ -77,3 +77,19 @@ Version: 1.2.0
   5. **Bilingual Navigation Parity:** Expanded Quick Navigation to 14 reciprocal items in English (`README.md`) and German (`README_de.md`).
   6. **PEP 621 Standard URLs:** Added `Marketing Log` and `Third-Party Licenses` to `pyproject.toml`.
   7. **Contract Verification:** Test suite expanded to 16 automated contract tests in `tests/test_metadata.py`.
+
+---
+
+## 6. Pfad A Repository Hygiene, CI Matrix & Contract Expansion (Stand: 2026-09-18)
+
+- **Audit Date:** 2026-09-18
+- **Version:** 1.2.1
+- **Auditor:** Antigravity / Gemini (via GithubBot Pfad A)
+- **Enhancements Implemented:**
+  1. **GitHub Actions CI/CD Pipeline:** Created comprehensive CI workflow suite in `.github/workflows/` (`ci.yml` with multi-OS Ubuntu/Windows and Python 3.10-3.13 matrix, `timeout-minutes: 15`, concurrency cancellation, and least-privilege `contents: read`; `stale.yml` with `actions/stale@v9` for automated triage; `welcome.yml` with `actions/first-interaction@v3` for new contributors).
+  2. **PEP 621 Build & Metadata Standardisation:** Added standard `[build-system]` with `setuptools` and `wheel`, `license-files`, discovery `keywords`, comprehensive `classifiers` for Python 3.10-3.13 and Windows/OS-Independent, optional `dev` dependencies, and tool settings for `ruff` and `pytest`.
+  3. **Multi-Host & Agent-Lock Hardening:** Extended `.gitignore` with system-wide multi-host conflict patterns (`*conflicted copy*`, `* (Kopie)*`, `* (Copy)*`, `*-ASUS*`, `*-ASUS-GEI*`, `*-LAPTOP*`, `*-WORKSTATION*`, `*-WORKSTATION-LG*`, `*-Mac Studio*`, `*-MacBook*`) and coordination locks (`LOCK.permissions.json`, `LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`, `uv.lock`, `!package-lock.json`).
+  4. **Statutory Legal Compliance (§ 521 BGB):** Integrated statutory liability disclaimer for gratuitous open-source provisions (§ 521 BGB Gefälligkeitsrecht) into `README_de.md` and international equivalent into `README.md`.
+  5. **SPDX & Governance Recertification:** Re-audited and updated `THIRD_PARTY_LICENSES.md` to version 1.2.1 / 2026-09-18, affirming LGPL-3.0 dynamic linking compliance, unprivileged `RunAsInvoker` security, and zero network egress.
+  6. **Contract Test Suite Expansion:** Extended `tests/test_metadata.py` with automated contract checks for CI workflows, gitignore protection patterns, PEP 621 configurations, and § 521 BGB statutory clauses; resolved all ruff lint warnings.
+
