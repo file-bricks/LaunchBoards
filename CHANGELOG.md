@@ -5,6 +5,14 @@ All notable changes to the LaunchBoards pointer repository and branding document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- README banner: both `README.md` and `README_de.md` displayed SoftwareCenter's own
+  red "SC" banner mislabeled as "LaunchBoards Banner". Repointed to the new,
+  purpose-made `banner-launchboards.png` (blue, LaunchBoards shield icon) hosted in
+  the shared SoftwareCenter repository (T-20260926-802873568).
+
 ## [1.2.1] - 2026-09-18
 
 ### Added

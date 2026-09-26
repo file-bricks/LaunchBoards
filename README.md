@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/file-bricks/SoftwareCenter/master/assets/banner.png" width="100%" alt="LaunchBoards Banner">
+<img src="https://raw.githubusercontent.com/file-bricks/SoftwareCenter/master/assets/banner-launchboards.png" width="100%" alt="LaunchBoards Banner">
 
 # LaunchBoards
 
